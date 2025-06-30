@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.light-theme {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.dark-theme {
+    background-color: #333;
+    color: #f5f5f5;
+}
+
+.sidebar {
+    border-right: 1px solid #ddd;
+}
+
+.note {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-theme .note {
+    background-color: #444;
+    color: #f5f5f5;
+    border: 1px solid #666;
+}

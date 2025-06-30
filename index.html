@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Bloc-Notes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-theme flex h-screen bg-gray-100">
+    <div class="flex w-full">
+        <!-- Barre latérale -->
+        <div class="sidebar w-64 bg-gray-200 p-4">
+            <div class="logo mb-6">
+                <img src="votre-logo.png" alt="Logo" class="h-12 mx-auto">
+            </div>
+            <ul class="space-y-2">
+                <li><a href="#" class="block text-gray-700 hover:text-gray-900">Notes</a></li>
+                <li><a href="#" class="block text-gray-700 hover:text-gray-900">Rappels</a></li>
+                <li><a href="#" class="block text-gray-700 hover:text-gray-900">Modifier les libellés</a></li>
+                <li><a href="#" class="block text-gray-700 hover:text-gray-900">Archive</a></li>
+                <li><a href="#" class="block text-gray-700 hover:text-gray-900">Corbeille</a></li>
+            </ul>
+        </div>
+        <!-- Zone principale -->
+        <div class="flex-1 p-4">
+            <div class="flex justify-between items-center mb-4">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Rechercher..." class="p-2 border rounded">
+                </div>
+                <div class="flex space-x-2">
+                    <button id="refresh-btn" class="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">Actualiser</button>
+                    <div class="relative">
+                        <button id="menu-btn" class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">⋮</button>
+                        <div id="menu" class="hidden absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg">
+                            <ul class="py-1">
+                                <li id="settings" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Paramètres</li>
+                                <li id="theme-toggle" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Thème sombre</li>
+                                <li id="feedback" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Avis</li>
+                                <li id="help" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Aide</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="create-note-btn" class="w-full max-w-md mx-auto block p-2 bg-yellow-400 text-white rounded hover:bg-yellow-500">Créer une note...</button>
+            <div id="notes-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+                <div class="note bg-white p-4 rounded-lg shadow">
+                    <h3 class="font-bold">allo</h3>
+                    <p>test</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
