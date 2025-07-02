@@ -1,29 +1,176 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.light-theme {
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-.dark-theme {
-    background-color: #333;
-    color: #f5f5f5;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
+  overflow-x: hidden;
 }
 
 .sidebar {
-    border-right: 1px solid #ddd;
+  position: fixed;
+  left: -200px;
+  width: 200px;
+  top: 4rem;
+  height: 100%;
+  background: #333;
+  color: white;
+  transition: left 0.5s;
+  padding-top: 20px;
+  border-radius: 15px;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.sidebar ul li:hover {
+  background: #555;
+}
+
+.menu-icon {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  z-index: 10;
+}
+
+.menu-icon:hover {
+  transform: scale(1.1);
+}
+
+.menu-icon:hover + .sidebar {
+  left: 0;
+}
+
+.sidebar.active ul li {
+  display: block;
+  animation: wowEffect 0.5s ease-out forwards;
+}
+
+@keyframes wowEffect {
+  0% { transform: scale(0.9); background: #333; font-size: 14px; opacity: 0; }
+  50% { transform: scale(1.1); background: #444; font-size: 16px; opacity: 0.5; }
+  100% { transform: scale(1); background: #555; font-size: 15px; opacity: 1; }
+}
+
+.logo-space {
+  position: fixed;
+  top: 20px;
+  left: 60px;
+  font-size: 24px;
+  color: #333;
+}
+
+.search-bar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 15px;
+}
+
+.settings-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.settings-icon:hover {
+  transform: scale(1.1);
+}
+
+.settings-menu {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  background: #fff;
+  border: 1px solid #ccc;
+  display: none;
+  padding: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 15px;
+}
+
+.settings-menu.active {
+  display: block;
+  animation: wowEffect 0.5s ease-out forwards;
+}
+
+.settings-menu div {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.settings-menu div:hover {
+  background: #d0e7ea;
+}
+
+.note-list {
+  margin-top: 80px;
 }
 
 .note {
-    transition: background-color 0.3s, color 0.3s;
+  background: #e0f7fa;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
-.dark-theme .note {
-    background-color: #444;
-    color: #f5f5f5;
-    border: 1px solid #666;
+.note:hover {
+  transform: scale(1.02);
+}
+
+.add-note {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: #00bcd4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.add-note:hover {
+  transform: scale(1.1);
+}
+
+.illustration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.illustration img {
+  max-width: 200px;
 }
