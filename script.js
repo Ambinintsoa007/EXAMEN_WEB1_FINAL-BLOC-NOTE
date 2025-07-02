@@ -47,6 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Notes actualisées !');
     });
 
+
+
+    
     // Actions du menu
     settings.addEventListener('click', () => alert('Paramètres ouverts !'));
     feedback.addEventListener('click', () => alert('Envoyer un avis !'));
