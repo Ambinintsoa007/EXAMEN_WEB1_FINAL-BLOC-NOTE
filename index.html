@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bloc-notes PC</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="top-bar">
+      <div class="left-icons">
+        <button class="icon" onclick="undo()">↶</button>
+        <button class="icon" onclick="redo()">↷</button>
+      </div>
+      <div class="note-info">
+        <span id="current-time">--:--</span>
+      </div>
+      <div class="right-icons">
+        <button class="icon" id="darkModeToggle">🌓</button>
+        <button class="icon" id="bgColorBtn">🎨</button>
+        <button class="icon" id="menuBtn">⋮</button>
+      </div>
+    </header>
+
+    <main class="note-body">
+      <input type="text" class="title" placeholder="Titre" />
+      <div id="editor" class="editor" contenteditable="true" data-placeholder="Notez ici..."></div>
+    </main>
+
+    <footer class="bottom-bar">
+      <!-- Boutons de style -->
+      <div class="format-group">
+        <button id="boldBtn" onclick="formatText('bold')" title="Gras (Ctrl+B)"><b>B</b></button>
+        <button id="italicBtn" onclick="formatText('italic')" title="Italique (Ctrl+I)"><i>I</i></button>
+        <button id="underlineBtn" onclick="formatText('underline')" title="Souligné (Ctrl+U)"><u>U</u></button>
+        <button id="strikeBtn" onclick="formatText('strikeThrough')" title="Barré"><s>S</s></button>
+      </div>
+
+      <!-- Alignement -->
+      <div class="format-group">
+        <button id="alignLeft" onclick="formatText('justifyLeft')" title="Aligner à gauche">⬅</button>
+        <button id="alignCenter" onclick="formatText('justifyCenter')" title="Centrer">▣</button>
+        <button id="alignRight" onclick="formatText('justifyRight')" title="Aligner à droite">➡</button>
+      </div>
+
+      <!-- Listes -->
+      <div class="format-group">
+        <button id="ulList" onclick="formatText('insertUnorderedList')" title="Liste à puces (Ctrl+M)">•</button>
+        <button id="olList" onclick="formatText('insertOrderedList')" title="Liste numérotée (Ctrl+L)">1.</button>
+      </div>
+
+      <!-- Couleurs -->
+      <div class="format-group color-group">
+        <label for="textColor" title="Couleur du texte">
+          <input type="color" id="textColor" value="#000000" />
+          <span>A</span>
+        </label>
+        <label for="bgColor" title="Couleur de fond">
+          <input type="color" id="bgColor" value="#ffffff" />
+          <span>🖍️</span>
+        </label>
+      </div>
+
+      <!-- Taille police -->
+      <div class="format-group">
+        <button onclick="changeFontSize(-1)" title="Réduire taille">A⁻</button>
+        <span id="fontSizeDisplay">12</span>
+        <button onclick="changeFontSize(1)" title="Augmenter taille">A⁺</button>
+        <input type="hidden" id="fontSize" value="12" />
+      </div>
+    </footer>
+
+    <!-- Menu principal -->
+    <div id="contextMenu" class="context-menu">
+      <button onclick="showTemplates()">Modèles de page</button>
+      <button onclick="exportNote()">Exporter la note</button>
+      <button onclick="importNotePrompt()">Importer une note</button>
+      <button onclick="clearNote()">Effacer tout</button>
+    </div>
+
+    <!-- Menu des modèles -->
+    <div id="templatesMenu" class="context-menu">
+      <button onclick="applyTemplate('lined')">Papier ligné</button>
+      <button onclick="applyTemplate('grid')">Papier quadrillé</button>
+      <button onclick="applyTemplate('cornell')">Méthode Cornell</button>
+      <button onclick="applyTemplate('blank')">Page blanche</button>
+    </div>
+
+    <!-- Menu des couleurs de fond -->
+    <div id="bgColorsMenu" class="context-menu color-palette">
+      <button onclick="changeBackground('linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)')">Dégradé bleu clair</button>
+      <button onclick="changeBackground('linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)')">Dégradé sable</button>
+      <button onclick="changeBackground('linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)')">Dégradé ciel</button>
+      <button onclick="changeBackground('linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)')">Dégradé rose</button>
+      <button onclick="changeBackground('linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)')">Dégradé pastel</button>
+      <button onclick="changeBackground('#fff8e1')">Jaune doux</button>
+      <button onclick="changeBackground('#e8f5e9')">Vert doux</button>
+      <button onclick="changeBackground('#f3e5f5')">Violet doux</button>
+      <button onclick="changeBackground('#ffffff')">Blanc</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
