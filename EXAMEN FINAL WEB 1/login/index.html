@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DCNote - Login</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Logo Header -->
+  <div class="logo-header">
+    <div class="logo-container">
+      <div class="logo-icon">📝</div>
+      <div class="logo-text">DC Note</div>
+    </div>
+    <!-- <p class="brand-tagline">Votre bloc-notes intelligent</p> -->
+  </div>
+
+  
+  <div class="wrapper">
+    <div class="form-container" id="login-card">
+      <div class="image-section"></div>
+      <div class="form-section">
+        <h2>Welcome Back 🌱</h2>
+        <p>Login to your DCNote account</p>
+        <input type="text" placeholder="Full Name" id="login-name" />
+        <input type="password" placeholder="Password" id="login-pass" />
+        <div class="options">
+          <label><input type="checkbox" /> Remember me</label>
+          <a href="#">Forgot Password?</a>
+        </div>
+        <button onclick="login()">Login</button>
+        <p class="toggle">Don't have an account? <span onclick="showRegister()">Sign up</span></p>
+      </div>
+    </div>
+    <div class="form-container hidden" id="register-card">
+      <div class="image-section"></div>
+      <div class="form-section">
+        <h2>Register 🌿</h2>
+        <p>Create your new DCNote account</p>
+        <input type="text" placeholder="Full Name" id="reg-name" />
+        <input type="email" placeholder="Email" id="reg-email" />
+        <input type="password" placeholder="Password" id="reg-pass" />
+        <input type="password" placeholder="Confirm Password" id="reg-confirm" />
+        <p class="terms">By signing up, you agree to our Terms of Use and Privacy Policy.</p>
+        <button onclick="register()">Sign Up</button>
+        <p class="toggle">Already have an account? <span onclick="showLogin()">Login</span></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

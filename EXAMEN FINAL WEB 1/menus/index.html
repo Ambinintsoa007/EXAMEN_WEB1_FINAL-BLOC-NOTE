@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloc-Notes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <button class="menu-button" id="menuToggle">
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                </button>
+                <div class="logo-icon">📝</div>
+                <h1 class="title">Mes Notes</h1>
+            </div>
+            <button class="new-note-btn" onclick="createNote()">+ Nouvelle Note</button>
+            
+            <div class="dropdown-menu" id="dropdownMenu">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Navigation</div>
+                    <div class="sidebar-item active" data-filter="all">
+                        <span>📋</span>
+                        <span>Toutes les notes</span>
+                        <span class="count">12</span>
+                    </div>
+                    <div class="sidebar-item" data-filter="favorites">
+                        <span>⭐</span>
+                        <span>Favoris</span>
+                        <span class="count">3</span>
+                    </div>
+                    <div class="sidebar-item" data-filter="recent">
+                        <span>🕒</span>
+                        <span>Récentes</span>
+                        <span class="count">5</span>
+                    </div>
+                    <div class="sidebar-item" data-filter="trash">
+                        <span>🗑️</span>
+                        <span>Corbeille</span>
+                        <span class="count">2</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Catégories</div>
+                    <div class="sidebar-item" data-filter="work">
+                        <span>💼</span>
+                        <span>Travail</span>
+                        <span class="count">4</span>
+                    </div>
+                    <div class="sidebar-item" data-filter="personal">
+                        <span>🏠</span>
+                        <span>Personnel</span>
+                        <span class="count">3</span>
+                    </div>
+                    <div class="sidebar-item" data-filter="ideas">
+                        <span>💡</span>
+                        <span>Idées</span>
+                        <span class="count">2</span>
+                    </div>
+                    <div class="sidebar-item" data-filter="travel">
+                        <span>✈️</span>
+                        <span>Voyage</span>
+                        <span class="count">1</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Étiquettes</div>
+                    <div class="tag-item" data-tag="urgent">
+                        <div class="tag-color" style="background: #ff4757;"></div>
+                        <span>Urgent</span>
+                    </div>
+                    <div class="tag-item" data-tag="important">
+                        <div class="tag-color" style="background: #ffa502;"></div>
+                        <span>Important</span>
+                    </div>
+                    <div class="tag-item" data-tag="projet">
+                        <div class="tag-color" style="background: #3742fa;"></div>
+                        <span>Projet</span>
+                    </div>
+                    <div class="tag-item" data-tag="personnel">
+                        <div class="tag-color" style="background: #2ed573;"></div>
+                        <span>Personnel</span>
+                    </div>
+                    <div class="tag-item" data-tag="inspiration">
+                        <div class="tag-color" style="background: #a4b0be;"></div>
+                        <span>Inspiration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar" style="display: none;">
+            <!-- Ancien sidebar caché -->
+        </div>
+
+        <div class="notes-grid">
+            <div class="note-card note-1" data-category="work" data-tags="urgent,projet" onclick="openNote(1)">
+                <div class="note-category">Travail</div>
+                <h3 class="note-title">Réunion projet</h3>
+                <p class="note-content">Points à discuter pour la réunion de demain avec l'équipe...</p>
+                <div class="note-meta">
+                    <span class="note-date">Aujourd'hui</span>
+                    <div class="note-icon" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24);">💼</div>
+                </div>
+            </div>
+
+            <div class="note-card note-2" data-category="personal" data-tags="personnel" onclick="openNote(2)">
+                <div class="note-category">Personnel</div>
+                <h3 class="note-title">Liste de courses</h3>
+                <p class="note-content">Lait, pain, œufs, légumes pour la semaine...</p>
+                <div class="note-meta">
+                    <span class="note-date">Hier</span>
+                    <div class="note-icon" style="background: linear-gradient(45deg, #4ecdc4, #44a08d);">🛒</div>
+                </div>
+            </div>
+
+            <div class="note-card note-3" data-category="ideas" data-tags="important,projet" onclick="openNote(3)">
+                <div class="note-category">Idées</div>
+                <h3 class="note-title">Projet App Mobile</h3>
+                <p class="note-content">Concepts et fonctionnalités pour la nouvelle application...</p>
+                <div class="note-meta">
+                    <span class="note-date">2 jours</span>
+                    <div class="note-icon" style="background: linear-gradient(45deg, #45b7d1, #96c93d);">💡</div>
+                </div>
+            </div>
+
+            <div class="note-card note-4" data-category="travel" data-tags="personnel" onclick="openNote(4)">
+                <div class="note-category">Voyage</div>
+                <h3 class="note-title">Vacances d'été</h3>
+                <p class="note-content">Destinations possibles et budget pour les vacances...</p>
+                <div class="note-meta">
+                    <span class="note-date">1 semaine</span>
+                    <div class="note-icon" style="background: linear-gradient(45deg, #f093fb, #f5576c);">✈️</div>
+                </div>
+            </div>
+
+            <div class="note-card note-5" data-category="personal" data-tags="inspiration" onclick="openNote(5)">
+                <div class="note-category">Lecture</div>
+                <h3 class="note-title">Citations inspirantes</h3>
+                <p class="note-content">Collection de citations qui m'inspirent au quotidien...</p>
+                <div class="note-meta">
+                    <span class="note-date">2 semaines</span>
+                    <div class="note-icon" style="background: linear-gradient(45deg, #ffd89b, #19547b);">📚</div>
+                </div>
+            </div>
+
+            <div class="note-card note-6" data-category="personal" data-tags="personnel" onclick="openNote(6)">
+                <div class="note-category">Recettes</div>
+                <h3 class="note-title">Recette gâteau</h3>
+                <p class="note-content">Ingrédients et étapes pour le gâteau au chocolat...</p>
+                <div class="note-meta">
+                    <span class="note-date">1 mois</span>
+                    <div class="note-icon" style="background: linear-gradient(45deg, #a8edea, #fed6e3);">🍰</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="floating-btn" onclick="createNote()">+</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
