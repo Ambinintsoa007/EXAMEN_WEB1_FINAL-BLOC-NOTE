@@ -1,4 +1,5 @@
-# EXAMEN_WEB1_FINAL-BLOC-NOTE
+#STD 2414-DYLAN 
+#STD 24193-CONELLI
 
 **Ceci est la 1ère version de l'application encore en ligne, il y aura d'autres versions améliorées à l'avenir**
 # Pour bien profiter DCnote veuillez utiliser GOOGLE CHROME 
