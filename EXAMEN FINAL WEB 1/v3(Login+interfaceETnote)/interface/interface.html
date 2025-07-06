@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="interfaceCss.css">
+    <link rel="icon" href="logo.png">
+    <title>Bloc-Notes</title>
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <button class="menu-button" id="menuToggle">
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                </button>
+                <div class="logo-icon">📝</div>
+                <h1 class="title">DCnote</h1>
+            </div>
+            <button class="new-note-btn" onclick="createNote()">+ Nouvelle Note</button>
+
+            <div class="view-controls">
+                <button class="view-btn active" data-view="grid" title="Vue grille">⊞</button>
+                <button class="view-btn" data-view="list" title="Vue liste">☰</button>
+            </div>
+
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Rechercher dans les notes..." class="search-input">
+                <button class="search-btn">🔍</button>
+            </div>
+            
+            <nav class="dropdown-menu" id="dropdownMenu">
+                <section class="sidebar-section">
+                    <div class="sidebar-title">Navigation</div>
+                    <div class="sidebar-item active" data-filter="all">
+                        <span>📋</span>
+                        <span>Toutes les notes</span>
+                        <span class="count" id="allCount">0</span>
+                    </div>
+                    <div class="sidebar-item" data-filter="favorites">
+                        <span>⭐</span>
+                        <span>Favoris</span>
+                        <span class="count" id="favCount">0</span>
+                    </div>
+                    <div class="sidebar-item" data-filter="recent">
+                        <span>🕒</span>
+                        <span>Récentes</span>
+                        <span class="count" id="recentCount">0</span>
+                    </div>
+                    <div class="sidebar-item" data-filter="trash">
+                        <span>🗑️</span>
+                        <span>Corbeille</span>
+                        <span class="count" id="trashCount">0</span>
+                    </div>
+                </section>
+
+                <section class="sidebar-section">
+                    <div class="sidebar-title">Catégories</div>
+                    <div class="sidebar-item" data-filter="work">
+                        <span>💼</span>
+                        <span>Travail</span>
+                        <span class="count" id="workCount">0</span>
+                    </div>
+                    <div class="sidebar-item" data-filter="personal">
+                        <span>🏠</span>
+                        <span>Personnel</span>
+                        <span class="count" id="personalCount">0</span>
+                    </div>
+                    <div class="sidebar-item" data-filter="ideas">
+                        <span>💡</span>
+                        <span>Idées</span>
+                        <span class="count" id="ideasCount">0</span>
+                    </div>
+                    <div class="sidebar-item" data-filter="travel">
+                        <span>✈️</span>
+                        <span>Voyage</span>
+                        <span class="count" id="travelCount">0</span>
+                    </div>
+                </section>
+
+                <section class="sidebar-section">
+                    <div class="sidebar-title">Étiquettes</div>
+                    <div class="tag-item" data-tag="urgent">
+                        <div class="tag-color" style="background: #ff4757;"></div>
+                        <span>Urgent</span>
+                    </div>
+                    <div class="tag-item" data-tag="important">
+                        <div class="tag-color" style="background: #ffa502;"></div>
+                        <span>Important</span>
+                    </div>
+                    <div class="tag-item" data-tag="projet">
+                        <div class="tag-color" style="background: #3742fa;"></div>
+                        <span>Projet</span>
+                    </div>
+                    <div class="tag-item" data-tag="personnel">
+                        <div class="tag-color" style="background: #2ed573;"></div>
+                        <span>Personnel</span>
+                    </div>
+                    <div class="tag-item" data-tag="inspiration">
+                        <div class="tag-color" style="background: #a4b0be;"></div>
+                        <span>Inspiration</span>
+                    </div>
+                </section>
+            </nav>
+        </header>
+
+        <main>
+            <div class="notes-grid" id="notesGrid">
+                <!-- Les notes seront ajoutées ici dynamiquement -->
+            </div>
+            
+            <div class="empty-state" id="emptyState">
+                <div class="empty-state-icon">📝</div>
+                <h2>Aucune note pour le moment</h2>
+                <p>Créez votre première note pour commencer à organiser vos idées</p>
+                <button class="new-note-btn" onclick="createNote()">Créer une note</button>
+            </div>
+        </main>
+    </div>
+
+    <button class="floating-btn" onclick="createNote()">+</button>
+
+    <script src="interfaceScript.js"></script>
+</body>
+</html>

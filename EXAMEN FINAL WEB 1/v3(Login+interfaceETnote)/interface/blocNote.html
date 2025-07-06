@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="blocNoteCss.css">
+  <link rel="icon" href="logo.png">
+  <title>Bloc-notes PC</title>
+  
+ 
+</head>
+    
+<body>
+  <div class="container">
+    
+    <header class="top-bar">
+      <nav class="left-icons">
+        <button class="icon" onclick="goBack()" title="Retour à l'accueil">🏠</button>
+        <button class="icon" onclick="undo()" title="Annuler">↶</button>
+        <button class="icon" onclick="redo()" title="Refaire">↷</button>
+      </nav>
+      <div class="note-info">
+        <time id="current-time">--:--</time>
+      </div>
+      <nav class="right-icons">
+        <button class="icon" id="readModeToggle" title="Mode lecture">📖</button>
+        <button class="icon" id="blueFilterToggle" title="Filtre lumière bleue">🔵</button>
+        <button class="icon" id="darkModeToggle" title="Mode sombre">🌓</button>
+        <button class="icon" id="bgColorBtn" title="Couleur de fond">🎨</button>
+        <button class="icon" id="menuBtn" title="Menu">⋮</button>
+      </nav>
+    </header>
+
+    <main class="note-body">
+      <div class="meta-section">
+        <select id="categorySelect" class="meta-select">
+          <option value="personal">Personnel</option>
+          <option value="work">Travail</option>
+          <option value="ideas">Idées</option>
+          <option value="travel">Voyage</option>
+        </select>
+        <button class="icon" id="favoriteBtn" title="Ajouter aux favoris">☆</button>
+      </div>
+      
+      <input type="text" class="title" placeholder="Titre de la note" aria-label="Titre de la note" />
+      <div id="editor" class="editor" contenteditable="true" data-placeholder="Écrivez votre note ici..." role="textbox" aria-label="Contenu de la note"></div>
+    </main>
+
+    <footer class="bottom-bar">
+      <!-- Boutons de style -->
+      <section class="format-group">
+        <button id="boldBtn" onclick="formatText('bold')" title="Gras (Ctrl+B)"><b>B</b></button>
+        <button id="italicBtn" onclick="formatText('italic')" title="Italique (Ctrl+I)"><i>I</i></button>
+        <button id="underlineBtn" onclick="formatText('underline')" title="Souligné (Ctrl+U)"><u>U</u></button>
+        <button id="strikeBtn" onclick="formatText('strikeThrough')" title="Barré"><s>S</s></button>
+      </section>
+
+      <!-- Alignement -->
+      <section class="format-group">
+        <button id="alignLeft" onclick="formatText('justifyLeft')" title="Aligner à gauche">⬅</button>
+        <button id="alignCenter" onclick="formatText('justifyCenter')" title="Centrer">▣</button>
+        <button id="alignRight" onclick="formatText('justifyRight')" title="Aligner à droite">➡</button>
+      </section>
+
+      <!-- Listes -->
+      <section class="format-group">
+        <button id="ulList" onclick="formatText('insertUnorderedList')" title="Liste à puces">•</button>
+        <button id="olList" onclick="formatText('insertOrderedList')" title="Liste numérotée">1.</button>
+      </section>
+
+      <!-- Couleurs -->
+      <section class="format-group color-group">
+        <label for="textColor" title="Couleur du texte">
+          <input type="color" id="textColor" value="#000000" />
+          <span>A</span>
+        </label>
+        <label for="bgColor" title="Couleur de fond">
+          <input type="color" id="bgColor" value="#ffffff" />
+          <span>🖍️</span>
+        </label>
+      </section>
+
+      <!-- Taille police -->
+      <section class="format-group">
+        <button onclick="changeFontSize(-1)" title="Réduire taille">A⁻</button>
+        <span id="fontSizeDisplay">14</span>
+        <button onclick="changeFontSize(1)" title="Augmenter taille">A⁺</button>
+        <input type="hidden" id="fontSize" value="14" />
+      </section>
+
+      <!-- Sauvegarde -->
+      <section class="format-group">
+        <button onclick="saveNote()" title="Sauvegarder la note">💾</button>
+        <button onclick="loadFromFile()" title="Charger fichier">📂</button>
+      </section>
+    </footer>
+
+    <!-- Menu principal -->
+    <nav id="contextMenu" class="context-menu">
+      <button onclick="showTemplates()">📄 Modèles de page</button>
+      <button onclick="saveNote()">💾 Sauvegarder la note</button>
+      <button onclick="saveAsTxt()">📥 Télécharger en TXT</button>
+      <button onclick="loadFromFile()">📂 Charger fichier</button>
+      <button onclick="clearNote()">🗑️ Effacer tout</button>
+    </nav>
+
+    <!-- Menu des modèles -->
+    <nav id="templatesMenu" class="context-menu">
+      <button onclick="applyTemplate('blank')">📄 Page blanche</button>
+      <button onclick="applyTemplate('lined')">📝 Papier ligné</button>
+      <button onclick="applyTemplate('grid')">⚏ Papier quadrillé</button>
+      <button onclick="applyTemplate('cornell')">📚 Méthode Cornell</button>
+      <button onclick="applyTemplate('todo')">✓ Liste de tâches</button>
+    </nav>
+
+    <!-- Menu des couleurs de fond -->
+    <nav id="bgColorsMenu" class="context-menu color-palette">
+      <button onclick="changeBackground('linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)')">🌊 Dégradé bleu</button>
+      <button onclick="changeBackground('linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)')">🏜️ Dégradé sable</button>
+      <button onclick="changeBackground('linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)')">☁️ Dégradé ciel</button>
+      <button onclick="changeBackground('#fff8e1')">🌻 Jaune doux</button>
+      <button onclick="changeBackground('#e8f5e9')">🌿 Vert doux</button>
+      <button onclick="changeBackground('#f3e5f5')">💜 Violet doux</button>
+      <button onclick="changeBackground('#ffffff')">⚪ Blanc</button>
+    </nav>
+
+    <!-- Input caché pour charger fichier -->
+    <input type="file" id="fileInput" accept=".txt" style="display: none;" />
+  </div>
+
+  <!-- Statut de sauvegarde -->
+  <div id="saveStatus" class="save-status">Sauvegardé !</div>
+
+  <script src="blocNoteScript.js">
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="interface/logo.png">
+  <title>DCNote - Connexion</title>
+  
+</head>
+
+
+<body>
+  <!-- En-tête avec logo -->
+  <header class="logo-header">
+    <div class="logo-container">
+      <div class="logo-icon" aria-label="Icône DCNote">📝</div>
+      <h1 class="logo-text">DC Note</h1>
+    </div>
+  </header>
+
+  <main class="wrapper">
+    <!-- Section de connexion -->
+    <section class="form-container" id="login-card">
+      <div class="form-section">
+        <h2>Bienvenue 🌱</h2>
+        <p>Connectez-vous à votre compte DCNote</p>
+        
+        <form id="login-form" novalidate>
+          <div class="form-group">
+            <label for="login-name">Nom d'utilisateur</label>
+            <input type="text" id="login-name" name="username" placeholder="Nom d'utilisateur" required />
+            <div class="error-message" id="login-name-error"></div>
+          </div>
+          
+          <div class="form-group">
+            <label for="login-pass">Mot de passe</label>
+            <input type="password" id="login-pass" name="password" placeholder="Mot de passe" required />
+            <div class="error-message" id="login-pass-error"></div>
+          </div>
+          
+          <div class="options">
+            <label for="remember-me">
+              <input type="checkbox" id="remember-me" name="remember" />
+              Se souvenir de moi
+            </label>
+            <a href="#" onclick="showForgotPassword()">Mot de passe oublié?</a>
+          </div>
+          
+          <button type="submit" class="buttonLogin">Se connecter</button>
+          <div class="success-message" id="login-success"></div>
+        </form>
+        
+        <p class="toggle">Pas de compte? <span onclick="showRegister()">S'inscrire</span></p>
+      </div>
+    </section>
+
+    <!-- Section d'inscription -->
+    <section class="form-container hidden" id="register-card">
+      <div class="form-section">
+        <h2>S'inscrire 🌿</h2>
+        <p>Créez votre nouveau compte DCNote</p>
+        
+        <form id="register-form" novalidate>
+          <div class="form-group">
+            <label for="reg-name">Nom d'utilisateur</label>
+            <input type="text" id="reg-name" name="fullname" placeholder="Nom d'utilisateur" required />
+            <div class="error-message" id="reg-name-error"></div>
+          </div>
+          
+          <div class="form-group">
+            <label for="reg-pass">Mot de passe</label>
+            <input type="password" id="reg-pass" name="password" placeholder="Mot de passe" required minlength="6" />
+            <div class="error-message" id="reg-pass-error"></div>
+          </div>
+          
+          <div class="form-group">
+            <label for="reg-confirm">Confirmer le mot de passe</label>
+            <input type="password" id="reg-confirm" name="confirmPassword" placeholder="Confirmer le mot de passe" required />
+            <div class="error-message" id="reg-confirm-error"></div>
+          </div>
+          
+          
+          <button type="submit">S'inscrire</button>
+          <div class="success-message" id="register-success"></div>
+        </form>
+        
+        <p class="toggle">Déjà un compte? <span onclick="showLogin()">Se connecter</span></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
